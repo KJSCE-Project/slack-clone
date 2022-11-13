@@ -7,7 +7,7 @@ const channelSchema = new mongoose.Schema({
     type: String,
     required: "This field is required",
   },
-  wid: [{ type: mongoose.Schema.Types.uid, ref: "workspaceSchema" }],
+  wid: [{ type: mongoose.Schema.Types.ObjectId, ref: "workspaceSchema" }],
   cname: {
     type: String,
     required: "This field is required",
@@ -15,11 +15,8 @@ const channelSchema = new mongoose.Schema({
   cdesc: {
     type: String,
     required: "This field is required",
-  },
-  ccreateTime: {
-    type: String,
-    required: "This field is required",
-  },
-});
+  }
+},
+{ timestamps: true });
 
-mongoose.model("Channel", channelSchema);
+module.exports = mongoose.model("Channel", channelSchema);

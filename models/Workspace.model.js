@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const userSchema = require("./user.model");
+const Schema = mongoose.Schema;
 
 const workspaceSchema = new mongoose.Schema({
   wid: {
@@ -14,9 +14,8 @@ const workspaceSchema = new mongoose.Schema({
     type: String,
     required: "This field is required",
   },
-  createdTime: {
-    type: Time,
-    required: "This field is required",
-  },
-  createdUser: [{ type: mongoose.Schema.Types.uid, ref: "userSchema" }],
-});
+  uid: [{ type: Schema.Types.ObjectId, ref: "userSchema" }],
+},
+{ timestamps: true });
+
+module.exports = mongoose.model("Workspace", workspaceSchema);

@@ -13,3 +13,10 @@ try {
 }
 
 require('./user.model');
+require('./administration.model');
+require('./channel.model');
+require('./invitation.model');
+require('./messages.model');
+require('./useChannel.model');
+require('./useWorkspace.model');
+require('./Workspace.model');

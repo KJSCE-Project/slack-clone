@@ -15,4 +15,4 @@ const useWorkspaceSchema = new mongoose.Schema({
   },
 });
 
-mongoose.model("UseWorkspace", useWorkspaceSchema);
+module.exports = mongoose.model("UseWorkspace", useWorkspaceSchema);

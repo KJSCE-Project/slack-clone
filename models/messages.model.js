@@ -6,7 +6,7 @@ const messagesSchema = new mongoose.Schema({
     type: String,
     required: "This field is required",
   },
-  cid: [{ type: mongoose.Schema.Types.uid, ref: "userSchema" }],
+  cid: [{ type: mongoose.Schema.Types.ObjectId, ref: "userSchema" }],
   uid: {
     type: String,
     required: "This field is required",
@@ -22,11 +22,8 @@ const messagesSchema = new mongoose.Schema({
   },
   url: {
     type: String,
-  },
-  createdTime: {
-    type: Time,
-    required: "This field is required",
-  },
-});
+  }
+},
+{ timestamps: true });
 
-mongoose.model("UseChannel", useChannelSchema);
+module.exports = mongoose.model("Messages", messagesSchema);

@@ -13,6 +13,7 @@ const administrationSchema = new mongoose.Schema({
     type: String,
     required: "This field is required",
   },
-});
+},
+{ timestamps: true });
 
-mongoose.model("Administration", administrationSchema);
+module.exports = mongoose.model("Administration", administrationSchema);

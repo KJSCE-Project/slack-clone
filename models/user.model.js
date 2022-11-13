@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+var Schema = mongoose.Schema;
+
 const userSchema = new mongoose.Schema({
   uid: {
     type: String,
@@ -52,6 +54,7 @@ const userSchema = new mongoose.Schema({
     ],
     required: "This field is required",
   },
-});
+},
+{ timestamps: true });
 
-mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);
