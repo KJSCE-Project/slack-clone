@@ -5,6 +5,7 @@ const workspaceSchema = new _Schema({
   wid: {
     type: String,
     required: "This field is required",
+    unique: true
   },
   wname: {
     type: String,
@@ -14,7 +15,7 @@ const workspaceSchema = new _Schema({
     type: String,
     required: "This field is required",
   },
-  uid: [{ type: Schema.Types.ObjectId, ref: "userSchema" }],
+  uid: [{ type: String, ref: "userSchema" }],
 },
 { timestamps: true });
 

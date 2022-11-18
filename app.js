@@ -4,6 +4,7 @@ import pkg from 'body-parser';
 const { urlencoded, json } = pkg;
 
 import userRouter from './routes/userRoutes.js'
+import workspaceRouter from './routes/workspaceRoutes.js'
 
 var app = express()
 
@@ -15,7 +16,7 @@ app.get('/', (req, res)=>{
 })
 // Set routes
 app.use('/user', userRouter);
-
+app.use('/workspace', workspaceRouter);
 
 app.listen('3000', ()=>{
     console.log('Server running');
