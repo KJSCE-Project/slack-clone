@@ -1,0 +1,29 @@
+{
+  "name": "slack_clone",
+  "version": "1.0.0",
+  "description": "1. Download mongo db compass\r 2. Create new connection with the url of cloud that we have.\r 3. Open folder in vs code. open terminal.\r 4. do npm init (required only once after cloning project).\r 5. whenver you want to run the server, type npm run start.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.7.2",
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KJSCE-Project/slack-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KJSCE-Project/slack-clone/issues"
+  },
+  "homepage": "https://github.com/KJSCE-Project/slack-clone#readme",
+  "type": "module"
+}
