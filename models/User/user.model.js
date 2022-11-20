@@ -23,11 +23,11 @@ const userSchema = new _Schema({
   },
   email: {
     type: String,
+    unique: true,
     required: "This field is required",
   },
   password: {
     type: String,
-    unique : true,
     required: "This field is required",
   },
   profile: {
