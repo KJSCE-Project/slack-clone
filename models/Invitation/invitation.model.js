@@ -6,8 +6,8 @@ const invitationSchema = new Schema({
     type: String,
     required: "This field is required",
   },
-  from: [{ type: Schema.Types.ObjectId, ref: "userSchema" }],
-  to: [{ type: Schema.Types.ObjectId, ref: "userSchema" }],
+  from: [{ type: String, ref: "userSchema" }],
+  to: [{ type: String, ref: "userSchema" }],
   Status: {
     type: Boolean,
     required: "This field is required",

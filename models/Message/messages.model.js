@@ -6,7 +6,7 @@ const messagesSchema = new Schema({
     type: String,
     required: "This field is required",
   },
-  cid: [{ type: Schema.Types.ObjectId, ref: "userSchema" }],
+  cid: [{ type: String, ref: "userSchema" }],
   uid: {
     type: String,
     required: "This field is required",

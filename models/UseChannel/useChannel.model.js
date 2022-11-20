@@ -11,8 +11,8 @@ const useChannelSchema = new Schema(
       required: "This field is required",
     },
     joinTime: {
-      type: String,
-      required: "This field is required",
+      type : Date,
+      default: Date.now,
     },
   },
   {

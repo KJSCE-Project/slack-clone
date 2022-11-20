@@ -10,8 +10,8 @@ const administrationSchema = new Schema({
     required: "This field is required",
   },
   adminTime: {
-    type: String,
-    required: "This field is required",
+    type : Date,
+    default: Date.now,
   },
 },
 { timestamps: true });

@@ -7,7 +7,7 @@ const channelSchema = new Schema({
     type: String,
     required: "This field is required",
   },
-  wid: [{ type: Schema.Types.ObjectId, ref: "workspaceSchema" }],
+  wid: [{ type: String, ref: "workspaceSchema" }],
   cname: {
     type: String,
     required: "This field is required",
