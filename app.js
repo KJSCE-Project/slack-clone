@@ -18,7 +18,7 @@ app.use(urlencoded({extended:false}))
 app.use(json())
 
 app.get('/', (req, res)=>{
-    res.end("<h1>Server is up and running.</h1>")
+    res.end("<h1>Server is up</h1>")
 })
 // Set routes
 app.use('/user', userRouter);
@@ -31,5 +31,5 @@ app.use('/usechannel', usechannelRouter);
 app.use('/invitation', invitationRouter);
 
 app.listen(process.env.PORT || 3000, ()=>{
-    console.log('Server running');
+    console.log('Server is up and running');
 })
