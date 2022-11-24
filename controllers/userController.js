@@ -12,6 +12,7 @@ export class UserService{
         user.last_name = req.body.last_name;
         user.email = req.body.email;
         user.password = req.body.password;
+        user.age = req.body.age;
         user.profile = req.body.profile;
         user.login_type = req.body.login_type;
         user.user_type = req.body.user_type;
@@ -34,6 +35,25 @@ export class UserService{
             console.error(err);
             return null;
           }
+    }
+
+    async login(req){
+      try {
+        if(req.body.username){
+          const result = await User.findOne({username: req.body.username},{password: req.body.password});
+          console.log(result._id.toString())
+          const res = await User.findById(result._id.toString());
+          return res;
+        }else if(req.body.email){
+          const result = await User.findOne({email: req.body.email},{password: req.body.password});
+          console.log(result._id.toString())
+          const res = await User.findById(result._id.toString());
+          return res;
+        }
+      } catch (err) {
+        console.error(err);
+        return null;
+      }
     }
 
     async getById(uid){

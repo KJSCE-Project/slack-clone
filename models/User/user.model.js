@@ -30,6 +30,10 @@ const userSchema = new _Schema({
     type: String,
     required: "This field is required",
   },
+  age: {
+    type: Number,
+    required: "This field is required",
+  },
   profile: {
     type: String,
     required: "This field is required",

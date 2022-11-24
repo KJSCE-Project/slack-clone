@@ -9,6 +9,7 @@ router.post('/',
     body("last_name").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid last name." }),
     body("email").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid email." }),
     body("password").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid password." }),
+    body("age").isInt().withMessage({ code: "field/invalid-value", message: "Invalid age." }),
     body("profile").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid profile." }),
     body("login_type").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid login type." }),
     body("user_type").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid user type." }),
@@ -47,6 +48,39 @@ router.post('/',
                         "message": "Could not update data for user"
                     })
                 }
+            }
+        }
+        catch (error) {
+            res.status(500).send({
+                code: "server/internal-error",
+                message: "An internal server error has occured"
+            });
+        }
+});
+
+router.post('/login',
+    async (req, res)=>{        
+        try {
+            let userService = new UserService();
+            // Check if username or email is null, if yes then insert new record
+            if((req.body.username!="" && req.body.email!="")){
+
+                let result = await userService.login(req);
+                if(result){
+                    res.status(201).send(result);
+                    return;
+                }else{
+                    res.status(400).send({
+                        "statusCode": 400,
+                        "message": "Could not login user"
+                    })
+                }
+            }
+            else{
+                res.status(400).send({
+                    "statusCode": 400,
+                    "message": "Could not login user. Invalid credentials."
+                })
             }
         }
         catch (error) {
