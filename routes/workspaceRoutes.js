@@ -76,4 +76,28 @@ router.get("/:wid", async (req, res) => {
     }
 });
 
+router.get("/user/:uid", async (req, res) => {
+    const uid = req.params.uid;
+    const workspaceService = new WorkspaceService();
+    try {
+        let workspace = await workspaceService.getAllByUserId(uid);
+        if (workspace === null) {
+            res.status(404).send({
+                code: "data/not-found",
+                message: "Workspaces for user not found"
+            });
+            return;
+        }
+        res.send(workspace);
+        return;
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send({
+            code: "server/internal-error",
+            message: "An internal server has occured"
+        });
+    }
+});
+
 export default router

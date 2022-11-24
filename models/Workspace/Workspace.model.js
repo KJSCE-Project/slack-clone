@@ -15,7 +15,7 @@ const workspaceSchema = new _Schema({
     type: String,
     required: "This field is required",
   },
-  uid: [{ type: String, ref: "userSchema" }],
+  uid: { type: String, ref: "userSchema" },
 },
 { timestamps: true });
 

@@ -38,4 +38,13 @@ export class WorkspaceService{
             return null;
           } 
     }
+    async getAllByUserId(uid){
+      try {
+          const result = await Workspace.find({uid: uid});
+          return result;
+        } catch (err) {
+          console.error(err);
+          return null;
+        } 
+  }
 }
