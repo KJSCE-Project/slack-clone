@@ -31,4 +31,13 @@ export class MessageService {
       return null;
     }
   }
+  async getByChannelId(cid) {
+    try {
+      const result = await Message.find({cid:cid}).sort({createdAt: -1});
+      return result;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }

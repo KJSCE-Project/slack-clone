@@ -61,4 +61,27 @@ router.get("/:mid", async (req, res) => {
         });
     }
 });
+router.get("/channel/:cid", async (req, res) => {
+    const cid = req.params.cid;
+    const messageService = new MessageService();
+    try {
+        let result = await messageService.getByChannelId(cid);
+        if (result === null) {
+            res.status(404).send({
+                code: "data/not-found",
+                message: "Messages for channel not found"
+            });
+            return;
+        }
+        res.send(result);
+        return;
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send({
+            code: "server/internal-error",
+            message: "An internal server has occured"
+        });
+    }
+});
 export default router;
