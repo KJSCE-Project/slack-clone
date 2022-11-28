@@ -30,10 +30,6 @@ const userSchema = new _Schema({
     type: String,
     required: "This field is required",
   },
-  dob: {
-    type: String,
-    required: "This field is required",
-  },
   profile: {
     type: String,
     required: "This field is required",
