@@ -12,6 +12,7 @@ import channelRouter from './routes/channelRoutes.js'
 import usechannelRouter from './routes/usechannelRoutes.js'
 import invitationRouter from './routes/invitationRoutes.js'
 import cloudinaryRouter from './routes/cloudinaryRouter.js'
+import cors from 'cors';
 
 import fileUpload from 'express-fileupload';
 var app = express()
@@ -22,7 +23,7 @@ app.use(fileUpload({
 
 app.use(urlencoded({extended:false}))
 app.use(json())
-
+app.use(cors());
 // Import config files
 import './config/cloudinary.config.js';
 
