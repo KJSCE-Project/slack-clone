@@ -29,4 +29,13 @@ export class ChannelService {
       return null;
     }
   }
+  async getAllChannels(wid) {
+    try {
+      const result = await Channel.find({ wid: wid });
+      return result;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }
