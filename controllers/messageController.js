@@ -40,4 +40,13 @@ export class MessageService {
       return null;
     }
   }
+  async getPersonalMsg(uid, cid) {
+    try {
+      const result = await Message.find({uid:uid, cid:cid}).sort({createdAt: -1});
+      return result;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }
