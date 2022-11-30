@@ -60,4 +60,27 @@ router.get("/:cid", async (req, res) => {
         });
     }
 });
+router.get("/workspace/:wid/channels", async (req, res) => {
+    const wid = req.params.wid;
+    const channelService = new ChannelService();
+    try {
+        let result = await channelService.getAllChannels(wid);
+        if (result === null) {
+            res.status(404).send({
+                code: "data/not-found",
+                message: "Channels not found"
+            });
+            return;
+        }
+        res.send(result);
+        return;
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send({
+            code: "server/internal-error",
+            message: "An internal server has occured"
+        });
+    }
+});
 export default router;
