@@ -10,6 +10,14 @@ const useChannelSchema = new Schema(
       type: String,
       required: "This field is required",
     },
+    uname: {
+      type: String,
+      required: "This field is required",
+    },
+    url: {
+      type: String,
+      required: "This field is required",
+    },
     joinTime: {
       type : Date,
       default: Date.now,
