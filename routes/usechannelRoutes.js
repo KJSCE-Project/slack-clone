@@ -8,6 +8,8 @@ import { UseChannelService } from "../controllers/usechannelController.js";
 router.post('/', 
     body("cid").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid cid." }),
     body("uid").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid uid." }),
+    body("uname").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid uname." }),
+    body("url").notEmpty().withMessage({ code: "field/invalid-value", message: "Invalid url." }),
     async (req, res)=>{
         const validationErrors = validationResult(req)
         if (!validationErrors.isEmpty()) {
@@ -47,6 +49,29 @@ router.get("/:cid", async (req, res) => {
             res.status(404).send({
                 code: "data/not-found",
                 message: "useChannel not found"
+            });
+            return;
+        }
+        res.send(result);
+        return;
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send({
+            code: "server/internal-error",
+            message: "An internal server has occured"
+        });
+    }
+});
+router.get("/:cid/users", async (req, res) => {
+    const cid = req.params.cid;
+    const usechannelService = new UseChannelService();
+    try {
+        let result = await usechannelService.getAllUsers(cid);
+        if (result === null) {
+            res.status(404).send({
+                code: "data/not-found",
+                message: "Users for channel not found"
             });
             return;
         }

@@ -26,4 +26,13 @@ export class UseChannelService {
       return null;
     }
   }
+  async getAllUsers(cid) {
+    try {
+      const result = await UseChannel.find({ cid: cid });
+      return result;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }
