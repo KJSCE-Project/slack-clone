@@ -84,4 +84,28 @@ router.get("/channel/:cid", async (req, res) => {
         });
     }
 });
+router.get("/personal/:uid/:cid", async (req, res) => {
+    const uid = req.params.uid;
+    const cid = req.params.cid;
+    const messageService = new MessageService();
+    try {
+        let result = await messageService.getPersonalMsg(uid, cid);
+        if (result === null) {
+            res.status(404).send({
+                code: "data/not-found",
+                message: "Personal Messages not found"
+            });
+            return;
+        }
+        res.send(result);
+        return;
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send({
+            code: "server/internal-error",
+            message: "An internal server has occured"
+        });
+    }
+});
 export default router;
