@@ -6,6 +6,8 @@ export class UseChannelService {
     var useChannel = new UseChannel();
     useChannel.cid = req.body.cid;
     useChannel.uid = req.body.uid;
+    useChannel.uname = req.body.uname;
+    useChannel.url = req.body.url;
     useChannel.joinTime = req.body.content;
 
     try {
